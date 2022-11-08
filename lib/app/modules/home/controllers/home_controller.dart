@@ -4,14 +4,14 @@ class HomeController extends GetxController {
   NewsProvider newsProvider = NewsProvider();
   var news = List<News>.empty().obs;
 
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  // }
+  @override
+  void onInit() {
+    loadNews();
+    super.onInit();
+  }
 
   @override
   void onReady() {
-    loadNews();
     super.onReady();
   }
 
