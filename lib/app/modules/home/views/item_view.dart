@@ -16,7 +16,9 @@ class ItemView extends GetView {
         title: Text(data.title),
         subtitle: Text(data.publishedAt),
         onTap: () {
-          Get.snackbar('Berita', 'Anda memilih berita');
+          Get.toNamed(Routes.DETAIL, arguments: [
+            {"url": data.url, "source": data.source.name}
+          ]);
         },
       ),
     );
