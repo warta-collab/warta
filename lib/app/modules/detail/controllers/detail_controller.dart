@@ -1,12 +1,15 @@
 part of '../../app_modules.dart';
 
 class DetailController extends GetxController {
-  //TODO: Implement DetailController
+  late WebViewController webviewcontroller;
+  late String url = "";
+  late String source = "";
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    url = Get.arguments[0]["url"];
+    source = Get.arguments[0]["source"];
   }
 
   @override
@@ -18,6 +21,4 @@ class DetailController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }
