@@ -15,11 +15,25 @@ class NewsProvider extends GetConnect {
       return request;
     });
   }
+  
+  Future<Response> getTopNews(var contry, var ktgr) {
+    final kategori = (ktgr != "") ? "&category=$ktgr" : "";
+    var resp = get(
+        "${AppConfig.API_ENDPOINT}v2/top-headlines?country=${contry}${kategori}",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer ${AppConfig.Key}",
+        });
+    return resp;
+  }
 
-  Future<Response> getTopNews() =>
-      // get<List<News>>('v2/top-headlines?country=id');
-      get("${AppConfig.API_ENDPOINT}v2/top-headlines?country=id", headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer ${AppConfig.Key}",
-      });
+  Future<Response> getNewsByQword(var q) {
+    final kyword = (q != "") ? "q=$q" : "";
+    var resp =
+        get("${AppConfig.API_ENDPOINT}v2/everything?q=bitcoin", headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer ${AppConfig.Key}",
+    });
+    return resp;
+  }
 }
